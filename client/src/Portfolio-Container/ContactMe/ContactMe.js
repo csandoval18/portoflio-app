@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
 import TypeAnimation from 'react-type-animation'
-
+// @ts-ignore
 import contactMeBG from '../../assets/ContactMe/contactmebg.jpg'
+// @ts-ignore
 import load from '../../assets/ContactMe/load.gif'
 import Animations from '../../Utilities/animations'
 import ScreenHeading from '../../Utilities/ScreenHeading/ScreenHeading'
@@ -47,11 +47,9 @@ const ContactMe = (props) => {
 
 			if (name.length === 0 || email.length === 0 || message.length === 0) {
 				setBanner(res.data.msg)
-				// toast.error(res.data.msg);
 				setBool(false)
 			} else if (res.status === 200) {
 				setBanner(res.data.msg)
-				// toast.success(res.data.msg);
 				setBool(false)
 
 				//reset inputs vars
@@ -88,7 +86,12 @@ const ContactMe = (props) => {
 						<label htmlFor='email'>Email</label>
 						<input type='email' onChange={handleEmail} value={email} />
 						<label htmlFor='message'>Message</label>
-						<textarea type='text' onChange={handleMessage} value={message} />
+						<textarea
+							// @ts-ignore
+							type='text'
+							onChange={handleMessage}
+							value={message}
+						/>
 						<div className='submit-btn'>
 							<button type='submit'>Send</button>
 							{bool ? (

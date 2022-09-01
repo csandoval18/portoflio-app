@@ -1,5 +1,5 @@
 import { RequestHandler, Response } from 'express'
-require('dotenv').config
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
@@ -31,6 +31,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const port = process.env.PORT
-app.listen(port, console.log('Server started in port: 4000'))
+app.listen(port, console.log('Server started in port:', process.env.PORT))
 
 // app.use(express.static('./client'));

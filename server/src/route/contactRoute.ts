@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-require('dotenv').config
+require('dotenv').config()
 const router = require('express').Router()
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
@@ -10,6 +10,7 @@ const oAuth2Client = new google.auth.OAuth2(
 	process.env.REDIRECT_URI,
 )
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
+console.log('email:', process.env.EMAIL)
 
 router.post('/contact', async (req: Request, res: Response) => {
 	let data = req.body
@@ -53,7 +54,10 @@ router.post('/contact', async (req: Request, res: Response) => {
 		trasport.sendMail(mailOptions, (error: any) => {
 			try {
 				if (error) {
-					return res.status(400).json({ msg: 'Please fill all the fields!' })
+					return res
+						.status(400)
+						.json({ msg: 'There is an error with the emailing server' })
+					// console.log(error)
 				}
 				return res.status(200).json({ msg: 'Your message was sent' })
 			} catch (error) {

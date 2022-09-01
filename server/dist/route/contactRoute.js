@@ -9,12 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require('dotenv').config;
+require('dotenv').config();
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URI);
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+console.log('email:', process.env.EMAIL);
 router.post('/contact', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let data = req.body;
     if (data.length === 0 ||
@@ -52,7 +53,9 @@ router.post('/contact', (req, res) => __awaiter(void 0, void 0, void 0, function
         trasport.sendMail(mailOptions, (error) => {
             try {
                 if (error) {
-                    return res.status(400).json({ msg: 'Please fill all the fields!' });
+                    return res
+                        .status(400)
+                        .json({ msg: 'There is an error with the emailing server' });
                 }
                 return res.status(200).json({ msg: 'Your message was sent' });
             }
