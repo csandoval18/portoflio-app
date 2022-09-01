@@ -1,0 +1,242 @@
+@font-face {
+	font-family: 'Poppins Medium';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-Medium.ttf');
+}
+
+@font-face {
+	font-family: 'Poppins Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Poppins SemiBold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+	font-family: 'Poppins Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'Poppins ExtraBold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-ExtraBold.ttf');
+}
+
+@font-face {
+	font-family: 'Poppins Light';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-Light.ttf');
+}
+
+@font-face {
+	font-family: 'Poppins Thin';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./assets/Fonts/Poppins-Thin.ttf');
+}
+
+* {
+	outline: none;
+}
+
+body {
+	margin: 0;
+	overflow-y: overlay;
+	font-family: 'Poppins Regular';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+::-webkit-scrollbar {
+	width: 6px !important;
+	height: 6px !important;
+}
+
+body ::-webkit-scrollbar-thumb {
+	background-color: hsla(0, 0%, 100%, 0.16);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-track {
+	background: hsla(0, 0%, 100%, 0.1);
+}
+
+/* ||||||||||||||||||||||| App Custom Buttons |||||||||||||||||||||||  */
+.btn {
+	border-radius: 50px;
+	padding: 14px 0;
+	width: 160px;
+	height: 44px;
+	cursor: pointer;
+	transition: 0.2s;
+	font-family: 'Poppins SemiBold';
+	position: relative;
+}
+
+.btn:active {
+	transform: translateY(3px);
+}
+
+.primary-btn {
+	color: white;
+	border: 2px solid white;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
+.primary-btn::before {
+	content: '';
+	border-radius: 18px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	bottom: 0;
+	right: 50%;
+	z-index: -1;
+	background-color: var(--light-blue);
+	transform: scaleX(0);
+}
+
+.primary-btn:hover::before {
+	transition: 0.5s all ease;
+	left: 0;
+	right: 0;
+	opacity: 1;
+	z-index: -1;
+	transform: scaleX(1);
+}
+
+.primary-btn:hover::after {
+	transition: 0.5s all ease;
+	left: -50%;
+	right: -50%;
+	opacity: 1;
+	z-index: 1;
+	transform: scale(1);
+}
+
+.primary-btn:hover {
+	color: white;
+	border: 2px solid var(--light-blue);
+	z-index: 1;
+}
+
+.highlighted-btn {
+	margin: 0 0 0 28px;
+	color: white;
+	font-size: 12px;
+	background-color: var(--light-blue);
+	box-shadow: inset 0 0 0 0 white;
+	transition: ease-out 0.5s;
+}
+
+.highlighted-btn a {
+	width: 160px !important;
+	height: 44px;
+}
+
+.highlighted-btn:hover {
+	box-shadow: inset 160px 0 0 0 white;
+	background-color: rgb(252, 252, 252);
+	color: var(--light-black);
+}
+
+/* ||||||||||||||||||||||| App Custom Dark Buttons ||||||||||||||||||||||| */
+.primary-btn-dark {
+	color: white;
+	border: 2px solid white;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
+.primary-btn-dark::before {
+	content: '';
+	border-radius: 18px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	bottom: 0;
+	right: 50%;
+	z-index: -1;
+	background-color: var(--light-blue);
+	transform: scaleX(0);
+}
+
+.primary-btn-dark:hover::before {
+	transition: 0.5s all ease;
+	left: 0;
+	right: 0;
+	opacity: 1;
+	z-index: -1;
+	transform: scaleX(1);
+}
+
+.primary-btn-dark:hover::after {
+	transition: 0.5s all ease;
+	left: -50%;
+	right: -50%;
+	opacity: 1;
+	z-index: 1;
+	transform: scale(1);
+}
+
+.primary-btn-dark:hover {
+	color: white;
+	border: 2px solid var(--light-blue);
+	z-index: 1;
+}
+
+.highlighted-btn-dark {
+	margin: 0 0 0 28px;
+	color: white;
+	font-size: 12px;
+	background-color: var(--light-blue);
+	box-shadow: inset 0 0 0 0 white;
+	transition: ease-out 0.5s;
+	border: 0px;
+}
+
+.highlighted-btn-dark a {
+	width: 160px !important;
+	height: 44px;
+}
+
+.highlighted-btn-dark:hover {
+	box-shadow: inset 160px 0 0 0 white;
+	background-color: white;
+	border: 0px;
+	color: var(--light-black);
+}
+
+/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+.red-border {
+	border: 1px solid var(--error-message) !important;
+}
+
+/* Fade in effect for every componenet */
+.fade-in {
+	opacity: 0;
+	/* transform: translateY(80px); */
+	transition: all 0.8s ease;
+}
