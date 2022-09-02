@@ -1,18 +1,23 @@
-import { Request, Response } from 'express'
-require('dotenv').config()
 const router = require('express').Router()
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
+const { oauth2 } = require('googleapis/build/src/apis/oauth2')
+
+const CLIENT_ID =
+	'338140014948-akp10n9pm4sqhcto046oerdp20c15atn.apps.googleusercontent.com'
+const CLEINT_SECRET = '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'
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
+const REFRESH_TOKEN =
+	'1//04o9TW38fl_HBCgYIARAAGAQSNwF-L9IrDajs85uCGzlnYjJ0J4TmSmagbigKCzTaRTRkDWrFhSALrF-By_3BtTNi8YyQrMSHy5o'
 
 const oAuth2Client = new google.auth.OAuth2(
-	process.env.CLIENT_ID,
-	process.env.CLIENT_SECRET,
-	process.env.REDIRECT_URI,
+	CLIENT_ID,
+	CLEINT_SECRET,
+	REDIRECT_URI,
 )
-oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
-console.log('email:', process.env.EMAIL)
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
-router.post('/contact', async (req: Request, res: Response) => {
+router.post('/contact', async (req: any, res: any) => {
 	let data = req.body
 	if (
 		data.length === 0 ||
@@ -25,20 +30,21 @@ router.post('/contact', async (req: Request, res: Response) => {
 		const accessToken = await oAuth2Client.getAccessToken()
 
 		const trasport = nodemailer.createTransport({
+			// @ts-ignore
 			service: 'gmail',
 			auth: {
 				type: 'OAuth2',
-				user: process.env.EMAIL,
-				clientId: process.env.CLIENT_ID,
-				clientSecret: process.env.CLIENT_SECRET,
-				refreshToken: process.env.REFRESH_TOKEN,
+				user: 'chris.sandoval1018@gmail.com',
+				clientId: CLIENT_ID,
+				clientSecret: CLEINT_SECRET,
+				refreshToken: REFRESH_TOKEN,
 				accessToken: accessToken,
 			},
 		})
 
 		const mailOptions = {
 			from: data.email,
-			to: process.env.EMAIL,
+			to: 'chris.sandoval1018@gmail.com',
 			subject: `Message from: ${data.name}`,
 			html: `
       <h3>Information</h3>
@@ -54,14 +60,13 @@ router.post('/contact', async (req: Request, res: Response) => {
 		trasport.sendMail(mailOptions, (error: any) => {
 			try {
 				if (error) {
-					return res
-						.status(400)
-						.json({ msg: 'There is an error with the emailing server' })
-					// console.log(error)
+					return res.status(400).json({ msg: 'Please fill all the fields!' })
 				}
-				return res.status(200).json({ msg: 'Your message was sent' })
+				//successful messge sent
+				res.status(200).json({ msg: 'Your message was sent' })
 			} catch (error) {
-				return res.status(500).json({ msg: 'There is a server error' })
+				if (error)
+					return res.status(500).json({ msg: 'There is a server error' })
 			}
 		})
 	} catch (error) {
