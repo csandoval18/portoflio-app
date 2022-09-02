@@ -1,9 +1,8 @@
-import React from 'react'
-import ScrollService from '../../../Utilities/scrollService'
 import TypeAnimation from 'react-type-animation'
+import ScrollService from '../../../Utilities/scrollService'
 import './Profile.css'
 
-const Profile = (props) => {
+const Profile = () => {
 	return (
 		<div className='profile-container'>
 			<div className='profile-parent'>

@@ -1,7 +1,7 @@
 .navbar-container {
 	display: flex;
 	justify-content: center;
-	height: 100px;
+	/* height: 100px; */
 	background-color: var(--light-black);
 	color: white;
 	position: sticky;

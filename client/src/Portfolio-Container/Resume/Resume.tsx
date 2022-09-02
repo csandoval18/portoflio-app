@@ -3,19 +3,32 @@ import ScreenHeading from '../../Utilities/ScreenHeading/ScreenHeading'
 import ScrollService from '../../Utilities/scrollService'
 import Animations from '../../Utilities/animations'
 import './Resume.css'
+import { ScreenType } from '../../Utilities/screens'
 
-const Resume = (props) => {
+interface ResumeProps {
+	id: string
+}
+
+interface ResumeHeadingProps {
+	heading?: string
+	fromDate?: string
+	toDate?: string
+	subHeading?: string
+	description?: string
+}
+
+const Resume = (props: ResumeProps) => {
 	const [selectedBulletIndex, setSelectedBulletIndex] = useState(0)
 	const [carouselOffSetStyle, setCarouselOffSetStyle] = useState({})
 
-	let fadeInScreenHandler = (screen) => {
+	let fadeInScreenHandler = (screen: any) => {
 		if (screen.fadeInScreen !== props.id) return
 		Animations.animations.fadeInScreen(props.id)
 	}
 
 	ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler)
 
-	const ResumeHeading = (props) => {
+	const ResumeHeading = (props: ResumeHeadingProps) => {
 		return (
 			<div className='resume-heading'>
 				<div className='resume-main-heading'>
@@ -118,26 +131,25 @@ const Resume = (props) => {
 			<div className='experience-description'>
 				<div className='resume-description-text'>
 					<span className='we-desc'>
-						- Development and maintanance of web applications with
-						HTML, JQuery, Laravel, and MySQL. The applications were
-						for use of residence hall front desk workers, students,
-						and staff.
+						- Development and maintanance of web applications with HTML, JQuery,
+						Laravel, and MySQL. The applications were for use of residence hall
+						front desk workers, students, and staff.
 					</span>
 				</div>
 			</div>
 			<div className='experience-description'>
 				<div className='resume-description-text'>
 					<span className='we-desc'>
-						- Creation and management of the university's domain
-						websites for the housing department using Ingeniux CMS.
+						- Creation and management of the university's domain websites for
+						the housing department using Ingeniux CMS.
 					</span>
 				</div>
 			</div>
 			<div className='experience-description'>
 				<div className='resume-description-text'>
 					<span className='we-desc'>
-						- Troubleshooting problems and aiding students with
-						personal account issues in the university system.
+						- Troubleshooting problems and aiding students with personal account
+						issues in the university system.
 					</span>
 				</div>
 			</div>
@@ -159,10 +171,7 @@ const Resume = (props) => {
 				</div>
 			))}
 		</div>,
-		<div
-			className='resume-screen-container projects-container'
-			key='projects'
-		>
+		<div className='resume-screen-container projects-container' key='projects'>
 			{projectsDetails.map((projectsDetails, index) => (
 				<ResumeHeading
 					key={index}
@@ -193,7 +202,7 @@ const Resume = (props) => {
 		</div>,
 	]
 
-	const handleCarousel = (index) => {
+	const handleCarousel = (index: number) => {
 		let offsetHeight = 360
 		let newCarouselOffset = {
 			style: {
@@ -208,9 +217,7 @@ const Resume = (props) => {
 		return resumeBullets.map((bullet, index) => (
 			<div
 				className={
-					index === selectedBulletIndex
-						? 'bullet selected-bullet'
-						: 'bullet'
+					index === selectedBulletIndex ? 'bullet selected-bullet' : 'bullet'
 				}
 				onClick={() => handleCarousel(index)}
 				key={index}
@@ -251,9 +258,7 @@ const Resume = (props) => {
 							<div className='bullets'>{getBullets()}</div>
 						</div>
 					</div>
-					<div className='resume-bullet-details'>
-						{getResumeScreen()}
-					</div>
+					<div className='resume-bullet-details'>{getResumeScreen()}</div>
 				</div>
 			</div>
 		</div>

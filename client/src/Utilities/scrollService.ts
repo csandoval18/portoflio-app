@@ -42,7 +42,7 @@ export default class ScrollService {
 		}
 	}
 
-	checkCurrentScreenUnderViewport = (event) => {
+	checkCurrentScreenUnderViewport = (event: any) => {
 		if (!event || event.length < 1) return
 
 		for (let screen of TOTAL_SCREENS) {
@@ -52,12 +52,12 @@ export default class ScrollService {
 			let partiallyVisible = this.isElementInView(screenFromDOM, 'partial')
 			let fullyVisible = this.isElementInView(screenFromDOM, 'complete')
 
-			if (fullyVisible || partiallyVisible) {
-				if (partiallyVisible && !screen.alreadyRendered) {
+			if (partiallyVisible && !screen.alreadyRendered) {
+				if (partiallyVisible) {
 					ScrollService.currentScreenFadeIn.next({
 						fadeInScreen: screen.screen_name,
 					})
-					screen['alreadyRendered'] = true
+					screen.alreadyRendered = true
 					break
 				}
 				if (fullyVisible) {

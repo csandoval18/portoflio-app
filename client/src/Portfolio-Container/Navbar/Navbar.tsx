@@ -1,10 +1,10 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import { TOTAL_SCREENS } from '../../Utilities/screens'
+import { ScreenType, TOTAL_SCREENS } from '../../Utilities/screens'
 import './Navbar.css'
 
-const Navbar = (props) => {
+const Navbar: React.FC = () => {
 	const [selectedScreen, setSelectedScreen] = useState(0)
 	const [showNavbarOptions, setShowNavbarOptions] = useState(false)
 
@@ -21,7 +21,7 @@ const Navbar = (props) => {
 		))
 	}
 
-	const getNavbarOptionsClass = (index) => {
+	const getNavbarOptionsClass = (index: number) => {
 		let classes = 'navbar-option '
 		if (index < TOTAL_SCREENS.length - 1) {
 			classes += 'navbar-option-separator '
@@ -32,7 +32,7 @@ const Navbar = (props) => {
 		return classes
 	}
 
-	const switchScreen = (index, screen) => {
+	const switchScreen = (index: number, screen: ScreenType) => {
 		let screenComponent = document.getElementById(screen.screen_name)
 		if (!screenComponent) return
 

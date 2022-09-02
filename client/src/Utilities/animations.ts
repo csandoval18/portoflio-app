@@ -1,7 +1,7 @@
 export default class Animations {
 	static animations = new Animations()
 
-	fadeInScreen = (screen_name) => {
+	fadeInScreen = (screen_name: string) => {
 		let screen = document.getElementById(screen_name)
 		if (!screen_name || !screen) return
 

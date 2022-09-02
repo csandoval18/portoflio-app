@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import TypeAnimation from 'react-type-animation'
 // @ts-ignore
 import contactMeBG from '../../assets/ContactMe/contactmebg.jpg'
