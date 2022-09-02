@@ -3,7 +3,7 @@ import { TOTAL_SCREENS } from '../Utilities/screens'
 import Navbar from './Navbar/Navbar'
 import './PortfolioContainer.css'
 
-const PortfolioContainer = (props) => {
+const PortfolioContainer = () => {
 	const mapAllScreens = () => {
 		return TOTAL_SCREENS.map((screen) =>
 			screen.component ? (

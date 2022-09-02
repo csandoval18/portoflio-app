@@ -2082,7 +2082,7 @@
 
 "@types/react-type-animation@^1.1.1":
   version "1.1.1"
-  resolved "https://registry.npmjs.org/@types/react-type-animation/-/react-type-animation-1.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/@types/react-type-animation/-/react-type-animation-1.1.1.tgz#8e59028a81e62ab2ec098390a3264838a6cd64e6"
   integrity sha512-YBUjbkOd9O0ZZFbL+DM75IeV7qSKa3P0Db01RhnXl1LVyOMmdmdijU6BDxf3RO/FKZadHNXkVNloNw7/hfjkQw==
   dependencies:
     "@types/react" "*"

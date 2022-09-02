@@ -6,6 +6,7 @@ import './AboutMe.css'
 
 interface AboutMeProps {
 	id: string
+	screenName: string
 }
 
 const AboutMe = (props: AboutMeProps) => {

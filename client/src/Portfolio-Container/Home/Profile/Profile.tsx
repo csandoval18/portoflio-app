@@ -32,19 +32,19 @@ const Profile = () => {
 									cursor={true}
 									repeat={Infinity}
 									sequence={[
-										'Junior Software Developer 💻',
+										'Junior Developer 💻',
 										1500,
 										'Front-End Apps',
 										1500,
 										'Back-End Servers',
 										1500,
-										'React',
+										'React + Redux',
 										1500,
 										'PostgreSQL',
 										1500,
 										'MongoDB',
 										1500,
-										'REST & GraphQL APIs',
+										"API's",
 										1500,
 										'LAMP Stack',
 										1500,

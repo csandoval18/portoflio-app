@@ -1,8 +1,7 @@
 import React from 'react'
-import './App.css'
 import PortfolioContainer from './Portfolio-Container/PortfolioContainer'
 
-const App = () => {
+const App: React.FC = () => {
 	return (
 		<div className='App'>
 			<PortfolioContainer />
