@@ -27,9 +27,9 @@ router.post('/contact', (req, res) => __awaiter(void 0, void 0, void 0, function
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: '',
+                user: process.env.EMAIL,
                 clientId: process.env.CLIENT_ID,
-                clientSecret: process.env.CLEINT_SECRET,
+                clientSecret: process.env.CLIENT_SECRET,
                 refreshToken: process.env.REFRESH_TOKEN,
                 accessToken: accessToken,
             },
@@ -51,7 +51,10 @@ router.post('/contact', (req, res) => __awaiter(void 0, void 0, void 0, function
         trasport.sendMail(mailOptions, (error) => {
             try {
                 if (error) {
-                    return res.status(400).json({ msg: 'Please fill all the fields!' });
+                    console.log(error);
+                    return res
+                        .status(400)
+                        .json({ msg: 'There was a problem with the server' });
                 }
                 return res.status(200).json({ msg: 'Your message was sent' });
             }

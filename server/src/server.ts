@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 
 //creating the middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: [process.env.ORIGIN], credentials: true }))
 
 app.use('/', contactRoute)
 
@@ -32,5 +32,3 @@ if (process.env.NODE_ENV === 'production') {
 
 const port = process.env.PORT
 app.listen(port, console.log('Server started in port:', process.env.PORT))
-
-// app.use(express.static('./client'));
