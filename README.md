@@ -8,4 +8,4 @@ yarn <br>
 
 cd ../server/ <br>
 yarn <br>
-yarn dev <br>
+yarn con <br>
