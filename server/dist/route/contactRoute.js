@@ -11,12 +11,8 @@ const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const { oauth2 } = require('googleapis/build/src/apis/oauth2');
-const CLIENT_ID = '338140014948-akp10n9pm4sqhcto046oerdp20c15atn.apps.googleusercontent.com';
-const CLEINT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04o9TW38fl_HBCgYIARAAGAQSNwF-L9IrDajs85uCGzlnYjJ0J4TmSmagbigKCzTaRTRkDWrFhSALrF-By_3BtTNi8YyQrMSHy5o';
-const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLEINT_SECRET, REDIRECT_URI);
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLEINT_SECRET, process.env.REDIRECT_URI);
+oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 router.post('/contact', (req, res) => __awaiter(this, void 0, void 0, function* () {
     let data = req.body;
     if (data.length === 0 ||
@@ -30,16 +26,16 @@ router.post('/contact', (req, res) => __awaiter(this, void 0, void 0, function* 
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'chris.sandoval1018@gmail.com',
-                clientId: CLIENT_ID,
-                clientSecret: CLEINT_SECRET,
-                refreshToken: REFRESH_TOKEN,
+                user: '',
+                clientId: process.env.CLIENT_ID,
+                clientSecret: process.env.CLEINT_SECRET,
+                refreshToken: process.env.REFRESH_TOKEN,
                 accessToken: accessToken,
             },
         });
         const mailOptions = {
             from: data.email,
-            to: 'chris.sandoval1018@gmail.com',
+            to: process.env.EMAIL,
             subject: `Message from: ${data.name}`,
             html: `
       <h3>Information</h3>

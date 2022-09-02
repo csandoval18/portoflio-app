@@ -28,34 +28,6 @@ const ContactMe = (props: ContactMeProps) => {
 	const [banner, setBanner] = useState<string>('')
 	const [bool, setBool] = useState<Boolean>(false)
 
-	const submitForm = async (e: { preventDefault: () => void }) => {
-		e.preventDefault()
-		try {
-			let data = {
-				name,
-				email,
-				message,
-			}
-			setBool(true)
-			const res = await axios.post('/contact', data)
-
-			if (name.length === 0 || email.length === 0 || message.length === 0) {
-				setBanner(res.data.msg)
-				setBool(false)
-			} else if (res.status === 200) {
-				setBanner(res.data.msg)
-				setBool(false)
-
-				//reset inputs vars
-				setName('')
-				setEmail('')
-				setMessage('')
-			}
-		} catch (error) {
-			console.log('Error: ' + error)
-		}
-	}
-
 	return (
 		<div className='main-container fade-in' id={props.id || ''}>
 			<ScreenHeading subHeading={'Send me a message'} title={'Contact Me'} />
@@ -73,7 +45,39 @@ const ContactMe = (props: ContactMeProps) => {
 					<div className='img-back'>
 						<img src={contactMeBG} alt='unable to load' />
 					</div>
-					<form onSubmit={submitForm}>
+					<form
+						onSubmit={async (e) => {
+							e.preventDefault()
+							try {
+								let data = {
+									name,
+									email,
+									message,
+								}
+								console.log('data:', data)
+								setBool(true)
+								const res = await axios.post('/contact', data)
+								if (
+									name.length === 0 ||
+									email.length === 0 ||
+									message.length === 0
+								) {
+									setBanner(res.data.msg)
+									setBool(false)
+								} else if (res.status === 200) {
+									setBanner(res.data.msg)
+									setBool(false)
+
+									//reset inputs vars
+									setName('')
+									setEmail('')
+									setMessage('')
+								}
+							} catch (error) {
+								console.log('Error: ' + error)
+							}
+						}}
+					>
 						<p>{banner}</p>
 						<label htmlFor='name'>Name</label>
 						<input
