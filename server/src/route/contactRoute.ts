@@ -1,3 +1,5 @@
+import { Request, Response } from 'express'
+
 const router = require('express').Router()
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
@@ -5,12 +7,12 @@ const { oauth2 } = require('googleapis/build/src/apis/oauth2')
 
 const oAuth2Client = new google.auth.OAuth2(
 	process.env.CLIENT_ID,
-	process.env.CLEINT_SECRET,
+	process.env.CLIENT_SECRET,
 	process.env.REDIRECT_URI,
 )
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
 
-router.post('/contact', async (req: any, res: any) => {
+router.post('/contact', async (req: Request, res: Response) => {
 	let data = req.body
 	if (
 		data.length === 0 ||
@@ -55,11 +57,9 @@ router.post('/contact', async (req: any, res: any) => {
 				if (error) {
 					return res.status(400).json({ msg: 'Please fill all the fields!' })
 				}
-				//successful messge sent
-				res.status(200).json({ msg: 'Your message was sent' })
+				return res.status(200).json({ msg: 'Your message was sent' })
 			} catch (error) {
-				if (error)
-					return res.status(500).json({ msg: 'There is a server error' })
+				return res.status(500).json({ msg: 'There is a server error' })
 			}
 		})
 	} catch (error) {

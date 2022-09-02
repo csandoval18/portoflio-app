@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,13 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const { oauth2 } = require('googleapis/build/src/apis/oauth2');
-const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLEINT_SECRET, process.env.REDIRECT_URI);
+const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URI);
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-router.post('/contact', (req, res) => __awaiter(this, void 0, void 0, function* () {
+router.post('/contact', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let data = req.body;
     if (data.length === 0 ||
         data.email.length === 0 ||
@@ -52,11 +54,10 @@ router.post('/contact', (req, res) => __awaiter(this, void 0, void 0, function* 
                 if (error) {
                     return res.status(400).json({ msg: 'Please fill all the fields!' });
                 }
-                res.status(200).json({ msg: 'Your message was sent' });
+                return res.status(200).json({ msg: 'Your message was sent' });
             }
             catch (error) {
-                if (error)
-                    return res.status(500).json({ msg: 'There is a server error' });
+                return res.status(500).json({ msg: 'There is a server error' });
             }
         });
     }
