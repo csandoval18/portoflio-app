@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
-const { oauth2 } = require('googleapis/build/src/apis/oauth2');
 const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URI);
 oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 router.post('/contact', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

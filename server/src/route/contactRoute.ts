@@ -1,9 +1,7 @@
 import { Request, Response } from 'express'
-
 const router = require('express').Router()
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
-const { oauth2 } = require('googleapis/build/src/apis/oauth2')
 
 const oAuth2Client = new google.auth.OAuth2(
 	process.env.CLIENT_ID,
