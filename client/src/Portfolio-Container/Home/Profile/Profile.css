@@ -4,14 +4,14 @@
 	text-align: center;
 	justify-content: center;
 	min-height: 670px;
+	width: 100%;
 }
 
 .profile-parent {
 	display: flex;
 	align-items: center;
 	color: white;
-	width: inherit;
-	gap: 3rem;
+	gap: 5rem;
 }
 
 .profile-detail-role {
@@ -176,6 +176,14 @@ i {
 	.profile-container {
 		min-height: 0px;
 		width: 100%;
+	}
+
+	.profile-parent {
+		gap: 0;
+	}
+
+	.type-animation h1 {
+		height: 125px;
 	}
 
 	.profile-details {

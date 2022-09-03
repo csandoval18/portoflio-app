@@ -34,7 +34,7 @@ const Profile = () => {
 									sequence={[
 										'Junior Developer 💻',
 										1500,
-										'Front-End Apps',
+										'Front-End UIs',
 										1500,
 										'Back-End Servers',
 										1500,
