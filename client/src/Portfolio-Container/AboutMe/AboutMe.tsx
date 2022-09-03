@@ -20,17 +20,10 @@ const AboutMe = (props: AboutMeProps) => {
 	const SCREEN_CONSTANTS = {
 		description: (
 			<div>
-				I am an aspiring Full-Stack web developer, but I currently specialize
-				with the Front End. I have solid knowledge in multiple programming
-				languages and concepts, and I always aspire to grow as a developer by
-				learning new technologies, and also by researching and practicing with
-				my current stack to gain mastery in my craft.
+				Hello! I am a Junior Software Engineer specializing with Front End
+				development.
 				<br></br>
-				<br></br>I primarily work with Javascript stacks. I use ReactJS and
-				NextJS in the Front-End, switching between SSR and CSR depending on
-				project needs. In the Back-End I mostly use express servers with GraphQL
-				and Rest APIs. The databases I am most familiar with are MongoDB, mySQL,
-				PostgreSQL, and Redis.
+				<br></br>I have experience working with Typescript
 				<br></br>
 				<br></br>I would describe myself as a fast learner. I am happy to learn
 				any development technologies and concepts. My special interests are
@@ -86,13 +79,13 @@ const AboutMe = (props: AboutMeProps) => {
 						</div>
 						<div className='about-me-options'>
 							<button
-								className='btn primary-btn-dark'
+								className='btn primary-btn'
 								onClick={() => ScrollService.scrollHandler.scrollToContactMe()}
 							>
 								Contact Me
 							</button>
 							<a
-								className='btn highlighted-btn-dark'
+								className='btn highlighted-btn'
 								href='Resume.pdf'
 								download='CAS_Resume.pdf'
 							>

@@ -72,7 +72,6 @@ form textarea {
 
 form input,
 textarea {
-	width: 100%;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
 	background-color: rgba(230, 230, 230, 0.6);
@@ -141,7 +140,7 @@ input:focus {
 	}
 
 	.central-form {
-		width: 98%;
+		max-width: 85%;
 	}
 
 	.title p {

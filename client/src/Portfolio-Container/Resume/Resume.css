@@ -12,6 +12,7 @@
 	min-height: fit-content;
 	padding-top: 65px;
 	padding-bottom: 130px;
+	min-height: 50rem;
 }
 
 .resume-content {
@@ -35,7 +36,7 @@
 	color: var(--light-black);
 	overflow: hidden;
 	display: flex;
-	height: 360px;
+	height: 600px;
 	width: 1500px;
 }
 
@@ -43,8 +44,8 @@
 	background-color: white;
 	height: 100%;
 	box-shadow: 15px 0 5px -15px (--light-black);
-	border-right: solid 2px rgb(193, 207, 219);
-	width: 400px;
+	border-right: solid 1px rgba(193, 207, 219, 0.514);
+	width: 350px;
 }
 
 .resume-bullet-details {
@@ -74,7 +75,7 @@
 }
 
 .bullets {
-	width: 80%;
+	width: 85%;
 	position: relative;
 	z-index: 2;
 }
@@ -85,7 +86,8 @@
 	background-color: var(--light-blue);
 	height: 40px;
 	margin: 15px 0;
-	padding: 0 8px;
+	padding-left: 10px;
+	padding-right: 5px;
 	border-radius: 10px;
 	/* initial width of selection effect */
 	width: 30px;
@@ -95,7 +97,6 @@
 
 /* selection effect once icon section is clicked */
 .selected-bullet {
-	/* color: var(--light-black); */
 	width: 100%;
 }
 
@@ -106,13 +107,13 @@
 }
 
 .bullet-logo {
-	height: 16px;
+	height: 20px;
 	margin: 0 30px 0 0;
 }
 
 /* blue column containing all icons */
 .bullet-icons {
-	width: 34px;
+	width: 45px;
 	height: 100%;
 	z-index: 1;
 	background-color: var(--light-blue);
@@ -124,7 +125,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	height: 360px;
+	height: 600px;
 	width: 100%;
 }
 
@@ -285,7 +286,7 @@
 
 	.resume-bullet-details {
 		border-radius: 15px;
-		height: 360px;
+		height: 600px;
 		width: fit-content;
 		padding: 0;
 	}

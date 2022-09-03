@@ -44,7 +44,7 @@ const Profile = () => {
 										1500,
 										'MongoDB',
 										1500,
-										"API's",
+										'Restful & GraphQL APIs',
 										1500,
 										'LAMP Stack',
 										1500,
