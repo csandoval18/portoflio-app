@@ -54,7 +54,6 @@ const ContactMe = (props: ContactMeProps) => {
 									email,
 									message,
 								}
-								console.log('data:', data)
 								setBool(true)
 								const res = await axios.post(
 									'http://localhost:5000/contact',
